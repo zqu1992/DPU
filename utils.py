@@ -92,10 +92,21 @@ def DPU_initialize(model, train_loader, loss_func):
     for name, param in model.named_parameters():
         if 'weight' in name and param.dim()>1:
             DPU_layers.append(DPU_module(param, layer_idx))  
-            layer_idx += 1        
-    train_loss, train_accuracy = test(model, train_loader, loss_func)
-    print("initial training loss: ", train_loss)  
-    print('initial training accuracy: ', train_accuracy)
+            layer_idx += 1       
+    model.eval()
+    epoch_train_loss = 0.0
+    correct_sum = [0. for i in range(len(TOPK))]
+    num_samples = 0
+    with torch.no_grad():
+        for inputs, labels in train_loader:               
+            inputs, labels = inputs.cuda(non_blocking=True), labels.cuda(non_blocking=True)
+            outputs = model(inputs)
+            loss = loss_func(outputs, labels)
+            accuracy(outputs, labels, correct_sum, topk=TOPK)
+            num_samples += labels.size(0)
+            epoch_train_loss += loss.item()
+        print("initial training loss: ", epoch_train_loss/len(train_loader))  
+        print('initial training accuracy: ', [ci/num_samples for ci in correct_sum])
     print('currrent number of updated weights per layer: ')
     for p_dpu in DPU_layers:
         print(p_dpu.num_updated_weights)

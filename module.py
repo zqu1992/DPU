@@ -34,7 +34,7 @@ class DPU_module(object):
         valid_metric = (self.metric[self.mask]).view(-1)
         sorted_idx = torch.argsort(valid_metric, descending=True)
         if num_top > self.num_updated_weights:
-            top_list = torch.tensor([ [ self.layer_idx, sorted_idx[i], valid_metric[sorted_idx[i]] ] for i in range(self.num_updated_weight)])  
+            top_list = torch.tensor([ [ self.layer_idx, sorted_idx[i], valid_metric[sorted_idx[i]] ] for i in range(self.num_updated_weights)])  
         else:
             top_list = torch.tensor([ [ self.layer_idx, sorted_idx[i], valid_metric[sorted_idx[i]] ] for i in range(num_top)])  
         return top_list
