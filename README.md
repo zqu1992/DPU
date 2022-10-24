@@ -42,9 +42,9 @@ For example, to update the VGGNet in multi-round on CIFAR10 dataset,
 
     python multiround_dpu.py --mode gcpu --without_reinit --updating_ratio 0.01 --model vgg --dataset cifar10 --dataset_size_init 1000 --dataset_size_subseq 1000   
 
-(3) Random Partial Updating (RPU) with updating ratio 0.01, dataset size of 1000 before the initial deployment, dataset size of 1000 in each subsequent round, and without the re-initialization strategy    
+(3) Random Partial Updating (RPU) with updating ratio 0.01, dataset size of 1000 before the initial deployment, dataset size of 1000 in each subsequent round    
 
-    python multiround_rpu.py --mode rpu --without_reinit --updating_ratio 0.01 --model vgg --dataset cifar10 --dataset_size_init 1000 --dataset_size_subseq 1000   
+    python multiround_rpu.py --mode rpu --updating_ratio 0.01 --model vgg --dataset cifar10 --dataset_size_init 1000 --dataset_size_subseq 1000   
 
 (4) Full Updating (FU) with dataset size of 1000 before the initial deployment, dataset size of 1000 in each subsequent round, and with the same re-initialization in each round
 
