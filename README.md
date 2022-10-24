@@ -50,7 +50,6 @@ For example, to update the VGGNet in multi-round on CIFAR10 dataset,
 
     python multiround_fu.py --mode same_init --model vgg --dataset cifar10 --dataset_size_init 1000 --dataset_size_subseq 1000 
 
-
 For more options, please refer to `python xxx.py -h` respectively.
 
 ### Results
