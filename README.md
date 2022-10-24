@@ -54,7 +54,7 @@ For more options, please refer to `python xxx.py -h` respectively.
 
 ### Results
 
-The average accuracy difference over all rounds related to full updating (updating ratio k)
+The average accuracy difference of different partial updating methods over all rounds related to full updating. k is the updating ratio.
 
 Method|MLP(k=0.005)|VGGNet(k=0.01)|ResNet56(k=0.1)
 :---:|:---:|:---:|:---:
