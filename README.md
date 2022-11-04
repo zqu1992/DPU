@@ -7,7 +7,7 @@ This repository contains the code of DPU introduced in our ECCV2022 paper:
 
 Z. Qu, C. Liu, and L. Thiele. Deep Partial Updating: Towards Communication Efficient Updating for On-device Inference.  
 
-[PDF](https://arxiv.org/pdf/2007.03071.pdf)
+[PDF](https://link.springer.com/content/pdf/10.1007/978-3-031-20083-0_9.pdf)
 
 ### Dependencies
 
@@ -71,12 +71,24 @@ More results can be found in the paper.
 If you use the code in your research, please cite as
 
 Zhongnan Qu, Cong Liu, Lothar Thiele. Deep Partial Updating: Towards Communication Efficient Updating for On-device Inference. In *the European Conference on Computer Vision* (ECCV), 2022.
-
-    @InProceedings{Qu_2022_ECCV,
-        author = {Qu, Zhongnan and Liu, Cong and Thiele, Lothar},
-        title = {Deep Partial Updating: Towards Communication Efficient Updating for On-device Inference},
-        booktitle = {The European Conference on Computer Vision (ECCV)},
-        month = {October},
-        year = {2022}
+    
+    @InProceedings{10.1007/978-3-031-20083-0_9,
+        author="Qu, Zhongnan
+        and Liu, Cong
+        and Thiele, Lothar",
+        editor="Avidan, Shai
+        and Brostow, Gabriel
+        and Ciss{\'e}, Moustapha
+        and Farinella, Giovanni Maria
+        and Hassner, Tal",
+        title="Deep Partial Updating: Towards Communication Efficient Updating for On-Device Inference",
+        booktitle="Computer Vision -- ECCV 2022",
+        year="2022",
+        publisher="Springer Nature Switzerland",
+        address="Cham",
+        pages="137--153",
+        abstract="Emerging edge intelligence applications require the server to retrain and update deep neural networks deployed on remote edge nodes to leverage newly collected data samples. Unfortunately, it may be impossible in practice to continuously send fully updated weights to these edge nodes due to the highly constrained communication resource. In this paper, we propose the weight-wise deep partial updating paradigm, which smartly selects a small subset of weights to update in each server-to-edge communication round, while achieving a similar performance compared to full updating. Our method is established through analytically upper-bounding the loss difference between partial updating and full updating, and only updates the weights which make the largest contributions to the upper bound. Extensive experimental results demonstrate the efficacy of our partial updating methodology which achieves a high inference accuracy while updating a rather small number of weights.",
+        isbn="978-3-031-20083-0"
     }
+
 
