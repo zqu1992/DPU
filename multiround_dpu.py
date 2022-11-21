@@ -271,7 +271,7 @@ if __name__ == "__main__":
                 p_dpu.metric.add_(p_dpu.local_contribution)
 
         # Sort the metric across all layers and rewind the weights to their initial values according to the updating ratio
-        metric_list = torch.tensor([])
+        metric_list = torch.tensor([]).cuda()
         num_weights_total = 0
         for i, (p_dpu, p) in enumerate(zip(DPU_layers, parameters_w)):
             # Choose the top-65% weights in the i-th layer for the later global sorting

@@ -234,7 +234,7 @@ if __name__ == "__main__":
         for p_dpu, p in zip(DPU_layers, parameters_w):
             p_dpu.metric.add_(torch.abs(p.data))
         # Sort the metric across all layers and prune the weights to zero according to the pruning ratio
-        metric_list = torch.tensor([])
+        metric_list = torch.tensor([]).cuda()
         num_weights_total = 0
         for i, (p_dpu, p) in enumerate(zip(DPU_layers, parameters_w)):
             # Choose the top-65% weights in the i-th layer for the later global sorting

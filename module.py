@@ -33,11 +33,9 @@ class DPU_module(object):
         """Sort the metric (only the valid metric with mask value 1) and output a list that contains the information of top num_top weights"""
         valid_metric = (self.metric[self.mask]).view(-1)
         sorted_idx = torch.argsort(valid_metric, descending=True)
-        if num_top > self.num_updated_weights:
-            top_list = torch.tensor([ [ self.layer_idx, sorted_idx[i], valid_metric[sorted_idx[i]] ] for i in range(self.num_updated_weights)])  
-        else:
-            top_list = torch.tensor([ [ self.layer_idx, sorted_idx[i], valid_metric[sorted_idx[i]] ] for i in range(num_top)])  
-        return top_list
+        n = min(num_top, self.num_updated_weights)
+        layer_idcs = torch.full((n,), self.layer_idx).cuda()
+        return torch.stack((layer_idcs, sorted_idx[:n], valid_metric[sorted_idx[:n]]), dim=-1)
 
     def update_mask(self, act_list):
         """Update the mask according to the given list of active weights"""
